@@ -1,0 +1,57 @@
+<div class="container">
+
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box"
+                 [fullScreen]="true"><p style="color: white; font-weight: bold;"> Cargando... </p></ngx-spinner>
+  
+    <div class="row" style="display: flex;  align-items: center; justify-content: center; min-height: 100vh;">
+      <div class="col-xs-12 col-md-10 col-lg-8">
+        <div class="card shadow">
+          <div class="card-header"
+               style="background-color: #515A5A;display: flex;align-items: center;justify-content: center;
+               box-shadow: 5px 5px 20px;">
+            <h3 class="text-white align-middle fw-bold mt-3" style="font-family: 'Roboto', sans-serif;">Dashboard
+              - Inicio de Sesión</h3>
+          </div>
+          <div class="card-body" style="background-color: #ECF0F1 ; box-shadow: 5px 5px 20px; border-radius: 5px;">
+            <form [formGroup]="formLogin" (ngSubmit)="onLogin()">
+              <div class="form-group mt-4 px-5">
+                <label class="fw-bold" style="font-family: 'Roboto', sans-serif;">Correo</label>
+                <input formControlName="correo" type="email" class="form-control mt-2">
+                <div class="mt-2">
+                  <span class="text-danger fw-bold"
+                        *ngIf="formLogin.get('correo')?.touched && formLogin.get('correo')?.errors?.['required']">
+                  <i class="fa-solid fa-info-circle"></i> Correo requerido
+                </span>
+                  <span class="text-danger fw-bold"
+                        *ngIf="formLogin.get('correo')?.touched && formLogin.get('correo')?.errors?.['email']">
+                  <i class="fa-solid fa-info-circle"></i> Formato de correo incorrecto por ejemplo example@gmail.com
+                </span>
+                </div>
+              </div>
+  
+              <div class="form-group mt-4 px-5">
+                <label class="fw-bold">Contraseña</label>
+                <input formControlName="contrasenia" type="password" class="form-control mt-2">
+                <div class="mt-2">
+                  <span class="text-danger fw-bold"
+                        *ngIf="formLogin.get('contrasenia')?.touched && formLogin.get('contrasenia')?.errors?.['required']">
+                  <i class="fa-solid fa-info-circle"></i> Contraseña requerida
+                </span>
+                </div>
+              </div>
+  
+              <div class="form-group px-5 d-flex justify-content-center" style="margin-top: 2rem">
+                <button [disabled]="formLogin.invalid" type="submit" class="btn btn-primary" style="background-color: #515A5A">Ingresar</button>
+              </div>
+            </form>
+            <p class="fw-bold text-center" style="margin-top: 1.7rem">¿No tienes una cuenta?
+              <a class="registerLink" routerLink="'/auth/register'">
+                Registrate
+              </a>
+            </p>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,132 @@
+
+.dashboard-container{
+    margin: auto;
+}
+
+.card-container{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.table-chart{
+    display: flex;
+    position: relative;
+    margin-top: 25px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.table-nuevos{
+    display: flex;
+    margin: auto;
+    margin-top: 25px;
+    flex-direction: column;
+    justify-content: center;
+    height: max-content;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    transition: 300ms ease-in-out;
+}
+
+.card-body{
+    display: flex;
+    
+    i{
+        align-content: flex-end;
+        font-size: 4rem;  
+    }
+
+    .cant-number{
+        margin: auto;
+        font-size: 4rem;
+        font-weight: bold;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        margin-bottom: 20px;
+    }
+}
+
+.pie-chart{
+    display: flex;
+    position: relative;
+    margin: auto;
+}
+
+@media screen and (min-width: 576px) {
+    .card-container{
+        display: flex;
+        margin: auto;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    h2{
+        font-size: 1rem;
+    }
+
+    .card-body{
+        display: flex;
+
+        i{
+            align-content: flex-end;
+            font-size: 4rem;  
+        }
+
+        .cant-number{
+            margin: auto;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .card-container{
+        display: flex;
+        margin: auto;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    h2{
+        font-size: 1.3rem;
+    }
+
+    .card:hover{
+        transform: scale(1.1);
+        transition: 300ms ease-in-out;
+    }
+
+    .card-body{
+        display: flex;
+
+        i{
+            align-content: flex-end;
+            font-size: 4rem;  
+        }
+
+        .cant-number{
+            margin: auto;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+    }
+
+    .table-nuevos{
+        display: flex;
+        position: absolute;
+        right: 10px;
+    }
+
+    .table-chart{
+        display: flex;
+        //margin: auto;
+        margin-top: 25px;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

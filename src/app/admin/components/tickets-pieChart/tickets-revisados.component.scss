@@ -1,0 +1,18 @@
+.chart-container{
+    height: auto;
+    width: 100%;
+    margin: auto;
+}
+
+@media screen and (max-width: 576px) {
+    .chart-container{
+        height: auto;
+        width: auto;
+        margin: auto;
+    }
+
+    // .chart{
+    //     height: 500px;
+    //     width: auto;
+    // }
+}
