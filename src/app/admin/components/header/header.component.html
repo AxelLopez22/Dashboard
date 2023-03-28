@@ -8,11 +8,9 @@
      </div>
    </div>
   
-    <button style="color: #212F3D;background-color: #fff; font-weight: bold;" mat-button [matMenuTriggerFor]="menu"> {{usernameAuthenticated}} <mat-icon>arrow_drop_down</mat-icon></button>
+    <button style="color: #212F3D;background-color: #fff; font-weight: bold; margin-right: 5px;" mat-button [matMenuTriggerFor]="menu"> {{usernameAuthenticated}} <mat-icon>arrow_drop_down</mat-icon></button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="clearLocalStorage()"><mat-icon>cached</mat-icon>Limpiar Registro</button>
       <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon> Cerrar Sesión</button>
     </mat-menu>  
-      
-  
 </nav>

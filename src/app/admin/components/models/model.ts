@@ -11,3 +11,7 @@ export interface TicketsUnManaged{
     proyecto: string,
     descripcion: string
 }
+
+export interface Clientes{
+    nombre: string
+}

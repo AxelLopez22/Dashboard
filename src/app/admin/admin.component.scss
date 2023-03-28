@@ -3,41 +3,15 @@ app-header{
     width: 100%;
     top: 0px;
     height: 4rem;
-    z-index: 1;
+    z-index: 21;
   }
   
   main{
-    position: absolute;
+    position: relative;
     width: 100%;
     top: 4rem;
-    z-index: 1;
+    z-index: 20;
   }
-
-  // app-side-nav{
-  //   position: fixed;
-  //   left: 0rem;
-  //   width: 60px;
-  //   height: 100vh;
-  // //calc(100vh - 4rem)
-  //   box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-  //   //background-color: rgba(34,34,34,1);
-  //   background-color: #212F3D;
-  //   border-top: 1px solid white;
-  //   overflow-x: hidden;
-  //   white-space: nowrap;
-  //   transition: width 250ms ease-in;
-  // }
-  
-  // .app-side-nav-open{
-  //   width: 250px;
-  //   position: absolute;
-  // }
-  // .display-area{
-  //   position: absolute;
-  //   left: 60px;
-  //   width: 100%;
-  //   transition: left 250ms ease-in, width 250ms ease-in;
-  // }
   
   .display-area-shrink{
     width: 100%;
@@ -45,37 +19,10 @@ app-header{
   
 
   @media screen and (max-width: 500px) {
-    // app-side-nav{
-    //   position: fixed;
-    //   left: 0rem;
-    //   width: 60px;
-    //   height: 100vh;
-    //   box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-    //   background-color: #212F3D;
-    //   border-top: 1px solid white;
-    //   overflow-x: hidden;
-    //   white-space: nowrap;
-    //   transition: width 250ms ease-in;
-    // }
-
     main{
       position: relative;
       width: 100%;
       top: 4rem;
-      z-index: 1;
+      z-index: 20;
     }
-
-    // .display-area-shrink{
-    //   display: flex;
-    //   top: 1px;
-    //   width: calc(100%);
-    //   left: 1px;
-    // }
-
-    // .area{
-    //   width: calc(100% - 60px);
-    //   display: flex;
-    //   justify-content: center;
-    // }
-
   }

@@ -25,5 +25,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
   background-color: #515A5A;;
 }
 
+.modal-backdrop.fade.show{
+  z-index: 19;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';

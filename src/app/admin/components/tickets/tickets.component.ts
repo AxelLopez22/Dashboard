@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ElementRef  } from '@angular/core';
+import { Component, Inject, OnInit, ElementRef, ViewChild, AfterViewInit  } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import {ToastrService} from "ngx-toastr";
 
@@ -13,7 +13,7 @@ export class TicketsComponent implements OnInit{
   private connection: HubConnection;
   
 
-  constructor(private toastr: ToastrService){
+  constructor(private toastr: ToastrService, private elRef: ElementRef){
     this.connection = new HubConnectionBuilder()
       .withUrl('https://localhost:7100/hub/notify')
       .build();

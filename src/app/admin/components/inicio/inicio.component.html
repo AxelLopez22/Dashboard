@@ -2,8 +2,8 @@
              [fullScreen]="true"><p style="color: white; font-weight: bold;"> Cargando... </p></ngx-spinner>
 
 
-<div class="row" style="margin: auto; display: flex; margin-top: -10px;">
-    <div class="dashboard-container mt-2">
+<div class="row" style="margin-top: -10px; position: relative; display: flex;">
+    <div class="dashboard-container mt-2" style="position: relative; height: 100%;">
         <div class="card-container row">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                 <div class="card mt-3" style="background-color: #5499C7 ; box-shadow: 5px 5px 20px;">
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div (click)="openModal('sinGestionar')" class="card mt-3" style="background-color: #922B21  ; box-shadow: 5px 5px 20px;"  data-bs-toggle="modal" data-bs-target="#generalModal">
+                <div data-bs-toggle="modal" data-bs-target="#generalModal" (click)="openModal('sinGestionar')" class="card mt-3" style="background-color: #922B21  ; box-shadow: 5px 5px 20px;">
                     <h2 class="mt-2" style="margin: auto; color: white">Tickets sin gestionar</h2>
                     <div class="card-body">
                         <i class="fa-solid fa-thumbtack" style="margin-left: 10px; color: white"></i>
@@ -23,12 +23,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="margin-top: 5px;">           
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="margin-top: 5px;">        
+                   
             </div>
         </div>
         <div class="card-container row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
-                <div (click)="openModal('pendientes')" class="card mt-3" style="background-color: #D35400; box-shadow: 5px 5px 20px;" data-bs-toggle="modal" data-bs-target="#generalModal">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div data-bs-toggle="modal" data-bs-target="#generalModal" (click)="openModal('pendientes')" class="card mt-3" style="background-color: #D35400; box-shadow: 5px 5px 20px;">
                     <h2 class="mt-2" style="margin: auto; color: white;">Tickets sin resolver</h2>
                     <div class="card-body">
                         <i class="fa-solid fa-circle-exclamation" style="margin-left: 10px; color: white;"></i>
@@ -52,30 +53,31 @@
     </div>
 
     <!--Tabla de notificaciones-->
-    <div class="table-nuevos col-xs-12 col-md-4 col-lg-4 ">
-        <app-tickets></app-tickets>
-     </div>
+    <div class="table-nuevos col-xs-12 col-md-4 col-lg-4">
+        <app-tickets class="table-wrapper"></app-tickets>
+    </div>
 
     <div class="row pie-chart">
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 mt-5">
             <app-tickets-revisados></app-tickets-revisados>
         </div>
     </div>
-    
-    <div class="table-chart col-xs-12 col-md-8 col-lg-8">
+</div>
+
+<div class="chart-line" style="margin: 5px;">
+    <div class="table-chart">
         <app-tickets-pendientes class="chart"></app-tickets-pendientes>
     </div>
 </div>
 
-<div class="modal modal-lg" id="generalModal"  tabindex="-1"  aria-hidden="true" 
-    data-bs-keyboard="false"
+<div class="modal fade modal-lg" id="generalModal" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" 
     style="top: 10%;
     height: 800px;
     margin: auto;">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" #modalTitle></h5>
+            <div class="modal-header" style="border-radius: 5px; box-shadow: 5px 5px 20px; background-color: #148F77; color: white">
+                <h5 class="modal-title" #modalTitle style="font-size: 1rem; font-weight: bold;"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
             </div>
             <div class="modal-body">

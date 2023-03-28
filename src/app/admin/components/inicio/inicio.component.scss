@@ -1,6 +1,9 @@
 
 .dashboard-container{
     margin: auto;
+    //display: flex;
+    //align-items: stretch;
+    // flex-wrap: wrap;
 }
 
 .card-container{
@@ -8,7 +11,6 @@
     margin: auto;
     flex-direction: column;
     justify-content: center;
-
 }
 
 .table-chart{
@@ -25,7 +27,6 @@
     margin-top: 25px;
     flex-direction: column;
     justify-content: center;
-    height: max-content;
 }
 
 .card:hover{
@@ -119,14 +120,22 @@
     .table-nuevos{
         display: flex;
         position: absolute;
-        right: 10px;
+        right: 7px;
+        margin-top: 25px;
     }
 
     .table-chart{
         display: flex;
-        //margin: auto;
         margin-top: 25px;
         flex-direction: column;
         justify-content: center;
+        height: 100%;
     }
+
+    // .table-wrapper{
+    //     position: relative;
+    //     height: 840px;
+    //     //height: 1119px;
+    //     overflow-y: auto;
+    // }
 }
