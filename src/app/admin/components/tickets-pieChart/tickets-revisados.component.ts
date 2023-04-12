@@ -13,49 +13,45 @@ export class TicketsRevisadosComponent implements OnInit{
   ticketsNotResolved!: number;
   ticketsUnManaged!: number;
   ticketsResolved!: number;
-  private connection: HubConnection;
+  ticketsNotAcepted!: number;
 
-
-  constructor(){
-    this.connection = new HubConnectionBuilder()
-      .withUrl('https://localhost:7100/hub/notify')
-      .build();
-
-    this.connection.on('TicketsResolved', count => {
-      this.ticketsResolved = count;
-      this.createChart(this.ticketsResolved, this.ticketsUnManaged, this.ticketsNotResolved);
+  constructor(private httpService: ApiServiceService){
+    this.httpService.ticketsResolved().subscribe((data:any) => {
+      this.ticketsResolved = data.data
+      this.createChart(this.ticketsResolved, this.ticketsUnManaged, this.ticketsNotResolved, this.ticketsNotAcepted);
     });
 
-    this.connection.on('TicketsNotResolved', count => {
-      this.ticketsNotResolved = count;
-      this.createChart(this.ticketsResolved, this.ticketsUnManaged, this.ticketsNotResolved);
+    this.httpService.ticketsNotResolved().subscribe((data:any) => {
+      this.ticketsNotResolved = data.data
+      this.createChart(this.ticketsResolved, this.ticketsUnManaged, this.ticketsNotResolved, this.ticketsNotAcepted);
     });
 
-    this.connection.on('TicketsUnManaged', count => {
-      this.ticketsUnManaged = count;
-      this.createChart(this.ticketsResolved, this.ticketsUnManaged, this.ticketsNotResolved);
+    this.httpService.ticketsUnManaged().subscribe((data:any) => {
+      this.ticketsUnManaged = data.data
+      this.createChart(this.ticketsResolved, this.ticketsUnManaged, this.ticketsNotResolved, this.ticketsNotAcepted);
+    });
+
+    this.httpService.ticketsNotAcepted().subscribe((data:any) => {
+      this.ticketsNotAcepted = data.data;
+      this.createChart(this.ticketsResolved, this.ticketsUnManaged, this.ticketsNotResolved, this.ticketsNotAcepted)
     });
   }
 
   ngOnInit(): void {
-    this.connection.start()
-      .then(_ => {
-        console.log('Connection Started');
-      }).catch(error => {
-        return console.error(error);
-      });
+
   }
 
-  createChart(value1: number, value2:number, value3:number){
-    if(this.ticketsNotResolved !== undefined && this.ticketsResolved !== undefined && this.ticketsUnManaged !== undefined){
+  createChart(value1: number, value2:number, value3:number, value4:number){
+    if(this.ticketsNotResolved !== undefined && this.ticketsResolved !== undefined && this.ticketsUnManaged !== undefined
+      && this.ticketsNotAcepted !== undefined){
       this.chart = new Chart("pie-chart", {
         type: 'pie',
         data: {
-          labels: ['Resueltos', 'Sin gestionar', 'Sin Resolver'],
+          labels: ['Nuevos', 'Sin gestionar', 'Sin Resolver', 'No Aceptados'],
             datasets: [{
               label: 'Cantidad',
-              data: [value1, value2, value3],
-              backgroundColor: ['#5499C7', '#922B21 ', '#D35400'],
+              data: [value1, value2, value3, value4],
+              backgroundColor: ['#5499C7', '#922B21 ', '#D35400', '#212F3C'],
               hoverOffset: 4
             }]
         },

@@ -1,16 +1,23 @@
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box"
              [fullScreen]="true"><p style="color: white"> Cargando... </p></ngx-spinner>
 
-<nav class="navbar navbar-expand navbar-dark  px-2 " style="background-color: #515A5A ;display: flex;justify-content: space-between; box-shadow: 5px 5px 20px;">
+<nav class="navbar navbar-expand navbar-dark  px-2 " style="background-color: #515A5A ;display: flex;
+  justify-content: space-between; box-shadow: 5px 5px 10px;">
     <div class="d-flex">
      <div class="side-nav-button p-2 me-3 text-light">
        <i class="fa-solid fa-bars"></i>
      </div>
-   </div>
+    </div>
+
+    <div>
+      <span style="color: #fff; font-weight: bold; font-size: 1.5rem;">Dashboard</span>
+    </div>
   
-    <button style="color: #212F3D;background-color: #fff; font-weight: bold; margin-right: 5px;" mat-button [matMenuTriggerFor]="menu"> {{usernameAuthenticated}} <mat-icon>arrow_drop_down</mat-icon></button>
+    <button style="color: #212F3D;background-color: #fff; font-weight: bold; margin-right: 5px;" 
+      mat-button [matMenuTriggerFor]="menu"> {{usernameAuthenticated}} <mat-icon>arrow_drop_down</mat-icon>
+    </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="clearLocalStorage()"><mat-icon>cached</mat-icon>Limpiar Registro</button>
+      <button mat-menu-item (click)="clearLocalStorage()"><mat-icon>delete</mat-icon>Limpiar Registro</button>
       <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon> Cerrar Sesión</button>
     </mat-menu>  
 </nav>

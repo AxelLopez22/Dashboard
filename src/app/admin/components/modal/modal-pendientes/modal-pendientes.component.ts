@@ -22,6 +22,7 @@ export class ModalPendientesComponent implements OnInit {
         this.ticketsNotResolved.push({
           idBug: item.idBug,
           cliente: item.cliente,
+          fecha: item.fecha,
           proyecto: item.proyecto,
           descripcion: item.descripcion
         });

@@ -22,4 +22,25 @@ export class ApiServiceService {
   obtenerTicketsStatusUnManaged(){
     return this.http.get(this.url + 'TicketStatus/TicketsUnManaged');
   }
+
+  ObtenerTicketsStatusNotAcepted(){
+    return this.http.get(this.url + 'TicketStatus/TicketsNotAcepted');
+  }
+
+  //Diagrama pastel
+  ticketsResolved(){
+    return this.http.get(this.url + 'Chart/ticketsNuevos');
+  }
+
+  ticketsNotResolved(){
+    return this.http.get(this.url + 'Chart/ticketsNotResolved');
+  }
+
+  ticketsUnManaged(){
+    return this.http.get(this.url + 'Chart/ticketsUnManaged');
+  }
+
+  ticketsNotAcepted(){
+    return this.http.get(this.url + 'Chart/ticketsNotAcepted');
+  }
 }

@@ -1,6 +1,7 @@
 export interface TicketsNotResolved{
     idBug: number,
     cliente: string,
+    fecha: Date, 
     proyecto: string,
     descripcion: string
 }
@@ -8,6 +9,15 @@ export interface TicketsNotResolved{
 export interface TicketsUnManaged{
     idBug: number,
     cliente: string,
+    fecha: Date,
+    proyecto: string,
+    descripcion: string
+}
+
+export interface TicketsNotAcepted{
+    idBug: number,
+    cliente: string,
+    fecha: Date,
     proyecto: string,
     descripcion: string
 }
@@ -15,3 +25,9 @@ export interface TicketsUnManaged{
 export interface Clientes{
     nombre: string
 }
+
+export interface message{
+    fecha: Date,
+    message: string
+  }
+  

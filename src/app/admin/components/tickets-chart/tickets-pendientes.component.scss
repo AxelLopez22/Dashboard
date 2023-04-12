@@ -1,22 +1,31 @@
-.chart-container{
-    height: auto;
-    width: auto;
+
+.contendor{
+    height: 100%;
+    width: 100%;
     margin: auto;
 }
 
-// .chart:hover{
-//     transform: scale(1.1);
-//     transition: 300ms ease-in-out;
-// }
+.chart-container{
+    height: max-content;
+    width: 100%;
+    margin: auto;
+}
+
+.chart{
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
 
 @media screen and (max-width: 576px) {
     .chart-container{
         height: auto;
         width: auto;
-    }
+        overflow-x: auto;
+    } 
 
     .chart{
-        height: 500px;
-        width: auto;
+        height: max-content;
+        width: 800px;
     }
 }

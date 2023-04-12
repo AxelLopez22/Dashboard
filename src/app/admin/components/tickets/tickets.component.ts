@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ElementRef, ViewChild, AfterViewInit  } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import {ToastrService} from "ngx-toastr";
+import { message } from '../models/model';
 
 @Component({
   selector: 'app-tickets',
@@ -21,7 +22,10 @@ export class TicketsComponent implements OnInit{
     this.connection.on('notify', message => {
       this.showAlert();
       this.message(message);
-      //this.soundNotification();
+    });
+
+    this.connection.on('updateTable', message => {
+      this.message(message);
     });
   }
 
@@ -36,15 +40,16 @@ export class TicketsComponent implements OnInit{
       });
   }
 
-  message(message: message){
-    this.dataSource.push(message);
+  message(message: message[]){
+    this.dataSource.push(...message);
     this.addToLocalStorage(message);
   }
 
-  addToLocalStorage(message: message){
-    const currentArray = JSON.parse(localStorage.getItem('notification') || '[]');
-    currentArray.push(message);
-    localStorage.setItem('notification', JSON.stringify(currentArray));
+  addToLocalStorage(message: message[]){
+    // const currentArray = JSON.parse(localStorage.getItem('notification') || '[]');
+    // currentArray.push(...message);
+    localStorage.removeItem('notification');
+    localStorage.setItem('notification', JSON.stringify(message));
   }
 
   showAlert(){
@@ -67,9 +72,10 @@ export class TicketsComponent implements OnInit{
       });
   }
 
-}
-
-interface message{
-  fecha: Date,
-  message: string
+  addColorTable(value: string){
+    if(value === 'Nombre' || '' ){
+      return '#F1948A';
+    }
+    return '';
+  }
 }

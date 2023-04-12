@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { Clientes } from '../models/model';
 import { ApiServiceService } from '../services/api-service.service';
@@ -11,49 +11,71 @@ import { ApiServiceService } from '../services/api-service.service';
 export class TicketsPendientesComponent implements OnInit{
   public chart: any;
   cliente: any[] = [];
-  constructor(private httpService: ApiServiceService){
+  tickets: any[] = [];
+
+  constructor(private httpService: ApiServiceService, private cdr: ChangeDetectorRef){
     this.httpService.ObtenerClientes().subscribe((data:any) => {
       for(let item of data.data){
-        this.cliente.push(item.nombre);
+        this.cliente.push(item.nombreClientes);
+        this.tickets.push(item.cantidadTickets);
       }
+      this.createChart();
     });
   }
 
   ngOnInit(): void {
-    this.obtenerClientes();
-    this.createChart();
+
   }
 
-  obtenerClientes(){
-    
+  actualizarComponente() {
+    this.createChart();
+    this.cdr.detectChanges();
   }
 
   createChart(){
-
-    console.log(this.cliente);
-    
-    if(this.cliente !== undefined || this.cliente !== null){
+    if((this.cliente !== undefined || this.cliente !== null) && (this.tickets !== undefined || this.tickets !== null)){
       this.chart = new Chart("MyChart", {
-        type: 'line', //this denotes tha type of chart
+        type: 'line',
   
-        data: {// values on X-Axis
+        data: {
           labels: this.cliente, 
            datasets: [
             {
               label: "Cant. Tickets",
-              data: [8,12,8,9,4,7,10,5,6,7,6,7,8,10,15,5,5,7,9,11],
-              backgroundColor: '#1F618D',
-              borderColor: '#A9CCE3',
-              pointRadius: 5,
-              pointHoverRadius: 6
+              data: this.tickets,
+              backgroundColor: '#A9CCE3',
+              borderColor: '#1F618D',
+              pointRadius: 5,  
+              pointHoverRadius: 6,
+              hoverBackgroundColor: '#1F618D',
+              pointHoverBackgroundColor: '#1F618D',
+              pointBorderColor: '#1F618D',
+              pointHoverBorderColor: '#1F618D',
+              tension: 0.3,
+              fill: true,
+              pointRotation: 20
             }
           ]
         },
         options: {
           aspectRatio:1.8,
-          responsive: true
+          responsive: true,
+          animations:{
+            tension: {
+              duration: 1000,
+              easing: 'linear',
+              from: 0.5,
+              to: 0,
+              loop: true
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 20
+            }
+          }
         }
-        
       });
     }
   }

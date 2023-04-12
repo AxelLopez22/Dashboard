@@ -33,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalPendientesComponent } from './components/modal/modal-pendientes/modal-pendientes.component';
 import { ModalSinGestionarComponent } from './components/modal/modal-sin-gestionar/modal-sin-gestionar.component';
+import { ModalnoAceptadosComponent } from './components/modal/modalno-aceptados/modalno-aceptados.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ModalSinGestionarComponent } from './components/modal/modal-sin-gestion
     TicketsPendientesComponent,
     TicketsRevisadosComponent,
     ModalPendientesComponent,
-    ModalSinGestionarComponent
+    ModalSinGestionarComponent,
+    ModalnoAceptadosComponent
   ],
   imports: [
     CommonModule,

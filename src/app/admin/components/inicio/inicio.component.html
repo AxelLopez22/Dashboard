@@ -6,16 +6,16 @@
     <div class="dashboard-container mt-2" style="position: relative; height: 100%;">
         <div class="card-container row">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="card mt-3" style="background-color: #5499C7 ; box-shadow: 5px 5px 20px;">
-                    <h2 class="mt-2" style="margin: auto; color: white;">Tickets Resueltos</h2>
+                <div data-bs-toggle="modal" data-bs-target="#generalModal" (click)="openModal('sinGestionar')" class="card mt-3" style="background-color: #5499C7 ; box-shadow: 5px 5px 20px;">
+                    <h2 class="mt-2" style="margin: auto; color: white;">Tickets Nuevos</h2>
                     <div class="card-body">
                         <i class="fa-solid fa-ticket" style="margin-left: 10px; color: white;"></i>
-                        <span class="cant-number" style="color: white;">{{ticketsResolved}}</span>
+                        <span class="cant-number" style="color: white;">{{ticketsNuevos}}</span>
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div data-bs-toggle="modal" data-bs-target="#generalModal" (click)="openModal('sinGestionar')" class="card mt-3" style="background-color: #922B21  ; box-shadow: 5px 5px 20px;">
+                <div class="card mt-3" style="background-color: #922B21  ; box-shadow: 5px 5px 20px;">
                     <h2 class="mt-2" style="margin: auto; color: white">Tickets sin gestionar</h2>
                     <div class="card-body">
                         <i class="fa-solid fa-thumbtack" style="margin-left: 10px; color: white"></i>
@@ -38,11 +38,11 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="card mt-3" style="background-color: #212F3C; box-shadow: 5px 5px 20px;">
+                <div data-bs-toggle="modal" data-bs-target="#generalModal" (click)="openModal('notAcepted')" class="card mt-3" style="background-color: #212F3C; box-shadow: 5px 5px 20px;">
                     <h2 class="mt-2" style="margin: auto; color: white;">Tickets no aceptados</h2>
                     <div class="card-body">
                         <i class="fa-solid fa-trash" style="margin-left: 10px; color: white;"></i>
-                        <span class="cant-number" style="color: white;">7</span>
+                        <span class="cant-number" style="color: white;">{{ticketsNotAcepted}}</span>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
     margin: auto;">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header" style="border-radius: 5px; box-shadow: 5px 5px 20px; background-color: #148F77; color: white">
+            <div class="modal-header" style="border-radius: 5px; box-shadow: 5px 5px 40px; background-color: #148F77; color: white">
                 <h5 class="modal-title" #modalTitle style="font-size: 1rem; font-weight: bold;"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
             </div>
@@ -86,5 +86,3 @@
         </div>
     </div>
 </div>
-
-

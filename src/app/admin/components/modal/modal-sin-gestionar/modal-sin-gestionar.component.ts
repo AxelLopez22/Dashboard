@@ -22,6 +22,7 @@ export class ModalSinGestionarComponent implements OnInit {
         this.ticketsUnManaged.push({
           idBug: item.idBug,
           cliente: item.cliente,
+          fecha: item.fecha,
           proyecto: item.proyecto,
           descripcion: item.descripcion
         });

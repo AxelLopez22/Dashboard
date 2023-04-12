@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, Type, ViewChild, ViewContainerRef } from
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { ModalPendientesComponent } from '../modal/modal-pendientes/modal-pendientes.component';
 import { ModalSinGestionarComponent } from '../modal/modal-sin-gestionar/modal-sin-gestionar.component';
+import { ModalnoAceptadosComponent } from '../modal/modalno-aceptados/modalno-aceptados.component';
 
 @Component({
   selector: 'app-inicio',
@@ -15,7 +16,8 @@ export class InicioComponent implements OnInit {
 
   ticketsNotResolved: number = 0;
   ticketsUnManaged: number = 0;
-  ticketsResolved: number = 0;
+  ticketsNuevos: number = 0;
+  ticketsNotAcepted: number = 0;
   private connection: HubConnection;
   
   constructor(){
@@ -23,8 +25,8 @@ export class InicioComponent implements OnInit {
       .withUrl('https://localhost:7100/hub/notify')
       .build();
 
-    this.connection.on('TicketsResolved', count => {
-      this.ticketsResolved = count;
+    this.connection.on('TicketsNuevos', count => {
+      this.ticketsNuevos = count;
     });
 
     this.connection.on('TicketsNotResolved', count => {
@@ -33,6 +35,10 @@ export class InicioComponent implements OnInit {
 
     this.connection.on('TicketsUnManaged', count => {
       this.ticketsUnManaged = count;
+    });
+
+    this.connection.on('TicketsNotAcepted', count => {
+      this.ticketsNotAcepted = count;
     });
   }
 
@@ -54,7 +60,11 @@ export class InicioComponent implements OnInit {
     }
     if(name === 'sinGestionar'){
       componentType = ModalSinGestionarComponent;
-      this.modalTitle.nativeElement.textContent = 'Tickets sin gestionar'
+      this.modalTitle.nativeElement.textContent = 'Tickets Nuevos';
+    }
+    if(name === 'notAcepted'){
+      componentType = ModalnoAceptadosComponent;
+      this.modalTitle.nativeElement.textContent = 'Tickets no Aceptados';
     }
     this.container.createComponent(componentType);
   }

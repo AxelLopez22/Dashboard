@@ -3,13 +3,13 @@
         <table class="table-responsive table-sm table-bordered">
             <thead>
                 <th><p style="font-size: 1rem;">Cliente</p></th>
-                <th><p style="font-size: 1rem;">Proyecto</p></th>
+                <th><p style="font-size: 1rem;">Fecha</p></th>
                 <th><p style="font-size: 1rem;">Descripcion</p></th>
             </thead>
             <tbody>
                 <tr *ngFor="let element of ticketsNotResolved">
                     <td>{{element.cliente}}</td>
-                    <td>{{element.proyecto}}</td>
+                    <td>{{element.fecha | date:'short'}}</td>
                     <td>{{element.descripcion}}</td>
                 </tr>
             </tbody>
