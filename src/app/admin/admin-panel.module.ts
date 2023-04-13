@@ -34,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalPendientesComponent } from './components/modal/modal-pendientes/modal-pendientes.component';
 import { ModalSinGestionarComponent } from './components/modal/modal-sin-gestionar/modal-sin-gestionar.component';
 import { ModalnoAceptadosComponent } from './components/modal/modalno-aceptados/modalno-aceptados.component';
+import { ModalNoGestionadosComponent } from './components/modal/modal-no-gestionados/modal-no-gestionados.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ModalnoAceptadosComponent } from './components/modal/modalno-aceptados/
     TicketsRevisadosComponent,
     ModalPendientesComponent,
     ModalSinGestionarComponent,
-    ModalnoAceptadosComponent
+    ModalnoAceptadosComponent,
+    ModalNoGestionadosComponent
   ],
   imports: [
     CommonModule,

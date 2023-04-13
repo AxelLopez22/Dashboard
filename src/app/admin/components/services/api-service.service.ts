@@ -27,6 +27,10 @@ export class ApiServiceService {
     return this.http.get(this.url + 'TicketStatus/TicketsNotAcepted');
   }
 
+  ObtenerTicketsStatusNoGestionados(){
+    return this.http.get(this.url + 'TicketStatus/noGestionados');
+  }
+
   //Diagrama pastel
   ticketsResolved(){
     return this.http.get(this.url + 'Chart/ticketsNuevos');

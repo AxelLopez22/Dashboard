@@ -1,28 +1,28 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { TicketsUnManaged } from '../../models/model';
+import { TicketsNoGestionados } from '../../models/model';
 import { ApiServiceService } from '../../services/api-service.service';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
 @Component({
-  selector: 'app-modal-sin-gestionar',
-  templateUrl: './modal-sin-gestionar.component.html',
-  styleUrls: ['./modal-sin-gestionar.component.scss']
+  selector: 'app-modal-no-gestionados',
+  templateUrl: './modal-no-gestionados.component.html',
+  styleUrls: ['./modal-no-gestionados.component.scss']
 })
-export class ModalSinGestionarComponent implements OnInit, AfterViewInit {
-  ticketsUnManaged: TicketsUnManaged[] = [];
+export class ModalNoGestionadosComponent implements OnInit, AfterViewInit{
+  ticketsNoGestionados: TicketsNoGestionados[] = [];
   displayedColumns: string[] = [
     'Cliente', 'Fecha', 'Descripcion'
   ];
-  dataSource = new MatTableDataSource<TicketsUnManaged>(this.ticketsUnManaged);
+  dataSource = new MatTableDataSource<TicketsNoGestionados>(this.ticketsNoGestionados);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private httpService: ApiServiceService){}
 
   ngOnInit(): void {
-    this.GetTicketsUnManaged();
+    this.TicketsNoGestionados();
   }
 
   ngAfterViewInit(): void {
@@ -35,8 +35,8 @@ export class ModalSinGestionarComponent implements OnInit, AfterViewInit {
     this.paginator._intl.lastPageLabel = 'Ultima pagina';
   }
 
-  GetTicketsUnManaged(){
-    this.httpService.obtenerTicketsStatusUnManaged().subscribe((data:any) => {
+  TicketsNoGestionados(){
+    this.httpService.ObtenerTicketsStatusNoGestionados().subscribe((data: any) => {
       this.dataSource.data = data.data;
     });
   }

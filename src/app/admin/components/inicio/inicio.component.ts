@@ -3,6 +3,7 @@ import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { ModalPendientesComponent } from '../modal/modal-pendientes/modal-pendientes.component';
 import { ModalSinGestionarComponent } from '../modal/modal-sin-gestionar/modal-sin-gestionar.component';
 import { ModalnoAceptadosComponent } from '../modal/modalno-aceptados/modalno-aceptados.component';
+import { ModalNoGestionadosComponent } from '../modal/modal-no-gestionados/modal-no-gestionados.component';
 
 @Component({
   selector: 'app-inicio',
@@ -56,7 +57,7 @@ export class InicioComponent implements OnInit {
     let componentType!: Type<any>;
     if(name === 'pendientes'){
       componentType = ModalPendientesComponent;
-      this.modalTitle.nativeElement.textContent = 'Tickets sin resolver';
+      this.modalTitle.nativeElement.textContent = 'Tickets sin Resolver';
     }
     if(name === 'sinGestionar'){
       componentType = ModalSinGestionarComponent;
@@ -65,6 +66,10 @@ export class InicioComponent implements OnInit {
     if(name === 'notAcepted'){
       componentType = ModalnoAceptadosComponent;
       this.modalTitle.nativeElement.textContent = 'Tickets no Aceptados';
+    }
+    if(name === 'NoGestionados'){
+      componentType = ModalNoGestionadosComponent;
+      this.modalTitle.nativeElement.textContent = 'Tickets no Gestionados'
     }
     this.container.createComponent(componentType);
   }

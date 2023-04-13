@@ -14,7 +14,8 @@
     </div>
   
     <button style="color: #212F3D;background-color: #fff; font-weight: bold; margin-right: 5px;" 
-      mat-button [matMenuTriggerFor]="menu"> {{usernameAuthenticated}} <mat-icon>arrow_drop_down</mat-icon>
+      mat-button [matMenuTriggerFor]="menu"> <mat-icon>arrow_drop_down</mat-icon> {{usernameAuthenticated}} 
+      
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="clearLocalStorage()"><mat-icon>delete</mat-icon>Limpiar Registro</button>

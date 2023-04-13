@@ -15,16 +15,12 @@
           <div class="card-body" style="background-color: #ECF0F1 ; box-shadow: 5px 5px 20px; border-radius: 0 0 5px 5px;">
             <form [formGroup]="formLogin" (ngSubmit)="onLogin()">
               <div class="form-group mt-4 px-5">
-                <label class="fw-bold" style="font-family: 'Roboto', sans-serif;">Correo</label>
-                <input formControlName="correo" type="email" class="form-control mt-2">
+                <label class="fw-bold" style="font-family: 'Roboto', sans-serif;">UserName</label>
+                <input formControlName="username" type="email" class="form-control mt-2">
                 <div class="mt-2">
                   <span class="text-danger fw-bold"
-                        *ngIf="formLogin.get('correo')?.touched && formLogin.get('correo')?.errors?.['required']">
-                  <i class="fa-solid fa-info-circle"></i> Correo requerido
-                </span>
-                  <span class="text-danger fw-bold"
-                        *ngIf="formLogin.get('correo')?.touched && formLogin.get('correo')?.errors?.['email']">
-                  <i class="fa-solid fa-info-circle"></i> Formato de correo incorrecto por ejemplo example@gmail.com
+                        *ngIf="formLogin.get('username')?.touched && formLogin.get('username')?.errors?.['required']">
+                  <i class="fa-solid fa-info-circle"></i> Nombre usuario requerido
                 </span>
                 </div>
               </div>
@@ -51,6 +47,9 @@
                 Registrate
               </a>
             </p>
+            <div class="mt-3 text-center">
+              <h5 class="text-success">{{message}}</h5>
+          </div>
           </div>
         </div>
   

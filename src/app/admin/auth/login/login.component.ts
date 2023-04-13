@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthenticationService } from '../services/authentication.service';
+import { Login } from '../../components/models/model';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class LoginComponent implements AfterViewInit {
   loader = false
   formLogin!: FormGroup
-  constructor(private route: Router, private fb:FormBuilder, private spinner: NgxSpinnerService) { }
+  message = '';
+  constructor(private route: Router, private fb:FormBuilder, private spinner: NgxSpinnerService,
+    private httpService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.formLogin = this.initFormLogin()
@@ -22,24 +26,45 @@ export class LoginComponent implements AfterViewInit {
   }
 
   onLogin(){
-    this.spinner.show();
-    const datos = {
-      id: 4,
-      nombreUsuario:"admin",
-      correo: "admin@gmail.com"
+    const datos: Login = {
+      UserName:  this.UserName.value,
+      Password: this.PWD.value
     }
-    localStorage.setItem("user-info",JSON.stringify(datos))
-    setTimeout(()=>{
-      this.spinner.hide()
-      this.route.navigate(['dashboard/admin/inicio']);
-    },2000)
+
+    this.httpService.login(datos).subscribe((data:any) => {
+      this.spinner.show();
+      if(data.message === 'Ok'){
+        localStorage.setItem("user-info",JSON.stringify(datos.UserName))
+        this.httpService.saveToken(data.data.token);
+        setTimeout(()=>{
+          this.spinner.hide()
+          this.route.navigate(['dashboard/admin/inicio']);
+        },2000);
+      }
+
+      if(data.message === 'Error'){
+        this.message === data.data;
+      }
+    },(error:any) => {
+      this.message = 'Credenciales invalidas';
+      console.log(error);
+  })
+
+    
+  }
+
+  get UserName(): FormControl {
+    return this.formLogin.get('username') as FormControl;
+  } 
+  get PWD(): FormControl {
+    return this.formLogin.get('contrasenia') as FormControl;
   }
 
 
   initFormLogin():FormGroup{
     return this.fb.group({
-      correo: ['admin@gmail.com',[Validators.required, Validators.email]],
-      contrasenia: ['admin123',[Validators.required,]]
+      username: ['',[Validators.required]],
+      contrasenia: ['',[Validators.required,]]
     })
   }
 }

@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit{
 
   logout(): void{
     this.spinner.show()
+    localStorage.removeItem('token');
     setTimeout(()=>{
       this.spinner.hide()
       this.authService.logout()

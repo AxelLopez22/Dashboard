@@ -41,6 +41,7 @@ export class TicketsComponent implements OnInit{
   }
 
   message(message: message[]){
+    this.dataSource.splice(0, this.dataSource.length);
     this.dataSource.push(...message);
     this.addToLocalStorage(message);
   }
@@ -73,7 +74,8 @@ export class TicketsComponent implements OnInit{
   }
 
   addColorTable(value: string){
-    if(value === 'Nombre' || '' ){
+    if(value === 'tiendas_palm' || 'empeños_rafla' || 'Farmacias Praga' || 'TECNOPANEL' || 'AGROESNICA' 
+        || 'HISPAMER' || 'ALASKACOOL' || 'MAYON' || 'Beauty Shop' || 'lub_nica'){
       return '#F1948A';
     }
     return '';
