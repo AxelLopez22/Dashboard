@@ -76,7 +76,7 @@ import { ModalNoGestionadosComponent } from './components/modal/modal-no-gestion
     MatSnackBarModule,
     NgxSpinnerModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-top-right',
+      positionClass: 'toast-bottom-right',
       preventDuplicates: true
     })
   ],
