@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div data-bs-toggle="modal" data-bs-target="#generalModal" (click)="openModal('notAcepted')" class="card mt-3" style="background-color: #212F3C; box-shadow: 5px 5px 10px;">
+                <div data-bs-toggle="modal" data-bs-target="#generalModal" (click)="openModal('notAcepted')" class="card mt-3" style="background-color: #D4AC0D; box-shadow: 5px 5px 10px;">
                     <h2 class="mt-2" style="margin: auto; color: white;">Tickets no aceptados</h2>
                     <div class="card-body">
                         <i class="fa-solid fa-trash" style="margin-left: 10px; color: white;"></i>
@@ -48,6 +48,29 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                 
+            </div>
+        </div>
+
+        <div class="card-container row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div data-bs-toggle="modal" data-bs-target="#generalModal" (click)="openModal('8DaysUnManaged')" class="card mt-3" style="background-color: #117A65; box-shadow: 5px 5px 10px;">
+                    <h2 class="mt-2" style="margin: auto; color: white;">Tickets 8 dias</h2>
+                    <div class="card-body">
+                        <i class="fa-solid fa-bug-slash" style="margin-left: 10px; color: white;"></i>
+                        <span class="cant-number" style="color: white;">{{tickets8DaysUnManaged}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div data-bs-toggle="modal" data-bs-target="#generalModal" (click)="openModal('ManagedToday')" class="card mt-3" style="background-color: #212F3C; box-shadow: 5px 5px 10px;">
+                    <h2 class="mt-2" style="margin: auto; color: white;">Tickets atendidos hoy</h2>
+                    <div class="card-body">
+                        <i class="fa-solid fa-check-to-slot" style="margin-left: 10px; color: white;"></i>
+                        <span class="cant-number" style="color: white;">{{ticketsManagedToday}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
             </div>
         </div>
     </div>

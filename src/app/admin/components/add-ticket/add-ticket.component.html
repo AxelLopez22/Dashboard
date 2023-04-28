@@ -1,0 +1,59 @@
+<mat-card style="box-shadow: 2px 2px 5px;">
+    <div>
+        <div style="padding: 20px;">
+            <span class="titulo">Nuevo Ticket</span>
+        </div>
+        <mat-divider></mat-divider>
+        <form [formGroup]="TicketsForm" (ngSubmit)="agregarTicket()">
+            <mat-grid-list [cols]="breakpoint" (window:resize)="onResize($event)" rowHeight="70px" gutterSize="10px" style="margin: 10px;">
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                        <mat-label>Cliente</mat-label>
+                        <input type="text" matInput [formControl]="$any(TicketsForm).controls['idCliente']" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelection($event)">
+                          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option.userName}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>                                              
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label>Proyecto</mat-label>
+                        <mat-select [(ngModel)]="selectedValue" name="food" [formControl]="$any(TicketsForm).controls['idProyecto']">
+                          <mat-option *ngFor="let item of listProyect" [value]="item.idProyecto">
+                            {{item.nombre}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="3" [rowspan]="2">
+                    <mat-form-field class="example-full-width" style="width: 100%; height: 100%;">
+                        <mat-label>Resumen</mat-label>
+                        <textarea style="height: 100%;" matInput [formControl]="$any(TicketsForm).controls['Resumen']" placeholder="Resumen del ticket"></textarea>
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="3" [rowspan]="3">
+                    <mat-form-field class="example-full-width" style="width: 100%; height: 100%;">
+                        <mat-label>Descripcion</mat-label>
+                        <textarea style="height: 100%;" matInput [formControl]="$any(TicketsForm).controls['Descripcion']" placeholder="Descripcion del ticket"></textarea>
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                  <mat-spinner style="margin-left: 10px; width: 50px; height: 50px;" *ngIf="loader;"></mat-spinner>
+                    <div style="width: 100%; height: 100%;">
+                        <button mat-flat-button color="primary" type="submit" style="display: flex; margin: auto;"
+                            [disabled]="TicketsForm.invalid" class="create-account-btn">
+                            Agregar
+                        </button>
+                    </div>                  
+                  </mat-grid-tile>
+
+            </mat-grid-list>
+        </form>
+    </div>
+</mat-card>

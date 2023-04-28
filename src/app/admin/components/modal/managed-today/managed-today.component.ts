@@ -1,28 +1,29 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { TicketsNoGestionados } from '../../models/model';
-import { ApiServiceService } from '../../services/api-service.service';
-import { MatPaginator } from '@angular/material/paginator';
+import { Tickets8DaysUnManaged } from '../../models/model';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { ApiServiceService } from '../../services/api-service.service';
 
 @Component({
-  selector: 'app-modal-no-gestionados',
-  templateUrl: './modal-no-gestionados.component.html',
-  styleUrls: ['./modal-no-gestionados.component.scss']
+  selector: 'app-managed-today',
+  templateUrl: './managed-today.component.html',
+  styleUrls: ['./managed-today.component.scss']
 })
-export class ModalNoGestionadosComponent implements OnInit, AfterViewInit{
-  ticketsNoGestionados: TicketsNoGestionados[] = [];
+export class ManagedTodayComponent implements OnInit, AfterViewInit {
+  tickets8DaysUnManaged: Tickets8DaysUnManaged[] = [];
   displayedColumns: string[] = [
    'Id', 'Cliente', 'Fecha', 'Descripcion'
   ];
-  dataSource = new MatTableDataSource<TicketsNoGestionados>(this.ticketsNoGestionados);
+
+  dataSource = new MatTableDataSource<Tickets8DaysUnManaged>(this.tickets8DaysUnManaged);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  
   constructor(private httpService: ApiServiceService){}
 
   ngOnInit(): void {
-    this.TicketsNoGestionados();
+    this.Tickets8DaysNoGestionados();
   }
 
   ngAfterViewInit(): void {
@@ -35,8 +36,8 @@ export class ModalNoGestionadosComponent implements OnInit, AfterViewInit{
     this.paginator._intl.lastPageLabel = 'Ultima pagina';
   }
 
-  TicketsNoGestionados(){
-    this.httpService.ObtenerTicketsStatusNoGestionados().subscribe((data: any) => {
+  Tickets8DaysNoGestionados(){
+    this.httpService.ObtenerTicketsManagedToday().subscribe((data: any) => {
       this.dataSource.data = data.data;
     });
   }

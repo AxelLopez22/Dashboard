@@ -8,7 +8,8 @@ import { Login } from '../../components/models/model';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  url='https://localhost:7100/api/';
+  url='http://dashboardapi.us-east-1.elasticbeanstalk.com/api/';
+  //url='https://localhost:7100/api/';
 
   constructor(private http:HttpClient, private router:Router, private jwt: JwtHelperService) { }
 

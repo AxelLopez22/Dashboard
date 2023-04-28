@@ -30,6 +30,22 @@ export interface TicketsNoGestionados{
     descripcion: string
 }
 
+export interface Tickets8DaysUnManaged{
+    idBug: number,
+    cliente: string,
+    fecha: Date,
+    proyecto: string,
+    descripcion: string
+}
+
+export interface TicketsManagedToday{
+    idBug: number,
+    cliente: string,
+    fecha: Date,
+    proyecto: string,
+    descripcion: string
+}
+
 export interface Clientes{
     nombre: string
 }
@@ -44,3 +60,19 @@ export interface Login{
     Password: string
 }
   
+export interface Usuarios{
+    id: number,
+    userName: string
+}
+
+export interface Proyects{
+    idProyecto: number,
+    nombre: string
+}
+
+export interface AddTicket{
+    idProyecto: number,
+    idCliente: number,
+    resumen: string,
+    descripcion: string
+}

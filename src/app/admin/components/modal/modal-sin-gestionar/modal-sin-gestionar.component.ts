@@ -13,7 +13,7 @@ import { MatSort } from '@angular/material/sort';
 export class ModalSinGestionarComponent implements OnInit, AfterViewInit {
   ticketsUnManaged: TicketsUnManaged[] = [];
   displayedColumns: string[] = [
-    'Cliente', 'Fecha', 'Descripcion'
+    'Id', 'Cliente', 'Fecha', 'Descripcion'
   ];
   dataSource = new MatTableDataSource<TicketsUnManaged>(this.ticketsUnManaged);
   @ViewChild(MatPaginator) paginator!: MatPaginator;

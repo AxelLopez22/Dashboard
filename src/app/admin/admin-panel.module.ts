@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
 import {MatPaginatorModule} from "@angular/material/paginator";
@@ -35,6 +35,11 @@ import { ModalPendientesComponent } from './components/modal/modal-pendientes/mo
 import { ModalSinGestionarComponent } from './components/modal/modal-sin-gestionar/modal-sin-gestionar.component';
 import { ModalnoAceptadosComponent } from './components/modal/modalno-aceptados/modalno-aceptados.component';
 import { ModalNoGestionadosComponent } from './components/modal/modal-no-gestionados/modal-no-gestionados.component';
+import { Modal8DaysUnmanagedComponent } from './components/modal/modal8-days-unmanaged/modal8-days-unmanaged.component';
+import { ManagedTodayComponent } from './components/modal/managed-today/managed-today.component';
+import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +53,10 @@ import { ModalNoGestionadosComponent } from './components/modal/modal-no-gestion
     ModalPendientesComponent,
     ModalSinGestionarComponent,
     ModalnoAceptadosComponent,
-    ModalNoGestionadosComponent
+    ModalNoGestionadosComponent,
+    Modal8DaysUnmanagedComponent,
+    ManagedTodayComponent,
+    AddTicketComponent
   ],
   imports: [
     CommonModule,
@@ -74,6 +82,11 @@ import { ModalNoGestionadosComponent } from './components/modal/modal-no-gestion
     DragDropModule,
     MatMenuModule,
     MatSnackBarModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
     NgxSpinnerModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
@@ -81,6 +94,6 @@ import { ModalNoGestionadosComponent } from './components/modal/modal-no-gestion
     })
   ],
   providers: [
-  ]
+  ], schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AdminPanelModule { }

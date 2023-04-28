@@ -13,7 +13,7 @@ import { MatSort } from '@angular/material/sort';
 export class ModalnoAceptadosComponent implements OnInit, AfterViewInit{
   ticketsNotAcepted: TicketsNotAcepted[] = [];
   displayedColumns: string[] = [
-    'Cliente', 'Fecha', 'Descripcion'
+    'Id', 'Cliente', 'Fecha', 'Descripcion'
   ];
   dataSource = new MatTableDataSource<TicketsNotAcepted>(this.ticketsNotAcepted);
   @ViewChild(MatPaginator) paginator!: MatPaginator;

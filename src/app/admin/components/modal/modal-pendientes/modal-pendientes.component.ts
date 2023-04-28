@@ -13,7 +13,7 @@ import { MatSort } from '@angular/material/sort';
 export class ModalPendientesComponent implements OnInit, AfterViewInit {
   ticketsNotResolved: TicketsNotResolved[] = [];
   displayedColumns: string[] = [
-    'Cliente', 'Fecha', 'Descripcion'
+    'Id', 'Cliente', 'Fecha', 'Descripcion'
   ];
   dataSource = new MatTableDataSource<TicketsNotResolved>(this.ticketsNotResolved);
   @ViewChild(MatPaginator) paginator!: MatPaginator;

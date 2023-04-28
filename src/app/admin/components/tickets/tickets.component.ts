@@ -16,7 +16,7 @@ export class TicketsComponent implements OnInit{
 
   constructor(private toastr: ToastrService, private elRef: ElementRef){
     this.connection = new HubConnectionBuilder()
-      .withUrl('https://localhost:7100/hub/notify')
+      .withUrl('http://dashboardapi.us-east-1.elasticbeanstalk.com/hub/notify')
       .build();
 
     this.connection.on('notify', message => {
@@ -74,8 +74,9 @@ export class TicketsComponent implements OnInit{
   }
 
   addColorTable(value: string){
-    if(value === 'tiendas_palm' || 'empeños_rafla' || 'Farmacias Praga' || 'TECNOPANEL' || 'AGROESNICA' 
-        || 'HISPAMER' || 'ALASKACOOL' || 'MAYON' || 'Beauty Shop' || 'lub_nica'){
+    if(value === 'tiendas_palm' || value === 'empeños_rafla' || value === 'Farmacias Praga' || value === 'TECNOPANEL' 
+        || value === 'AGROESNICA' || value === 'HISPAMER' || value === 'ALASKACOOL' || value === 'MAYON' 
+        || value === 'Beauty Shop' || value === 'lub_nica'){
       return '#F1948A';
     }
     return '';

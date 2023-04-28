@@ -4,10 +4,27 @@
     margin: auto;
 }
 
+.contenedor{
+    height: max-content;
+    width: 100%;
+    margin: auto;
+}
+
+.chart{
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
 @media screen and (max-width: 576px) {
-    .chart-container{
+    .contenedor{
         height: auto;
         width: auto;
-        margin: auto;
+        overflow-x: auto;
+    } 
+
+    .chart{
+        height: max-content;
+        width: 400px;
     }
 }

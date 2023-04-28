@@ -4,6 +4,8 @@ import { ModalPendientesComponent } from '../modal/modal-pendientes/modal-pendie
 import { ModalSinGestionarComponent } from '../modal/modal-sin-gestionar/modal-sin-gestionar.component';
 import { ModalnoAceptadosComponent } from '../modal/modalno-aceptados/modalno-aceptados.component';
 import { ModalNoGestionadosComponent } from '../modal/modal-no-gestionados/modal-no-gestionados.component';
+import { Modal8DaysUnmanagedComponent } from '../modal/modal8-days-unmanaged/modal8-days-unmanaged.component';
+import { ManagedTodayComponent } from '../modal/managed-today/managed-today.component';
 
 @Component({
   selector: 'app-inicio',
@@ -19,11 +21,13 @@ export class InicioComponent implements OnInit {
   ticketsUnManaged: number = 0;
   ticketsNuevos: number = 0;
   ticketsNotAcepted: number = 0;
+  tickets8DaysUnManaged: number = 0;
+  ticketsManagedToday: number = 0;
   private connection: HubConnection;
   
   constructor(){
     this.connection = new HubConnectionBuilder()
-      .withUrl('https://localhost:7100/hub/notify')
+      .withUrl('http://dashboardapi.us-east-1.elasticbeanstalk.com/hub/notify')
       .build();
 
     this.connection.on('TicketsNuevos', count => {
@@ -40,6 +44,14 @@ export class InicioComponent implements OnInit {
 
     this.connection.on('TicketsNotAcepted', count => {
       this.ticketsNotAcepted = count;
+    });
+
+    this.connection.on("Tickets8DayUnManaged", count => {
+      this.tickets8DaysUnManaged = count;
+    });
+
+    this.connection.on("TicketsManagedToday", count => {
+      this.ticketsManagedToday = count;
     });
   }
 
@@ -69,8 +81,18 @@ export class InicioComponent implements OnInit {
     }
     if(name === 'NoGestionados'){
       componentType = ModalNoGestionadosComponent;
-      this.modalTitle.nativeElement.textContent = 'Tickets no Gestionados'
+      this.modalTitle.nativeElement.textContent = 'Tickets no Gestionados';
+    }
+    if(name === '8DaysUnManaged'){
+      componentType = Modal8DaysUnmanagedComponent;
+      this.modalTitle.nativeElement.textContent = "Tickets 8 dias";
+    }
+    if(name === 'ManagedToday'){
+      componentType = ManagedTodayComponent;
+      this.modalTitle.nativeElement.textContent = "Resueltos hoy";
     }
     this.container.createComponent(componentType);
   }
 }
+
+//http://dashboardapi.us-east-1.elasticbeanstalk.com

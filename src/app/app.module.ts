@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminPanelModule } from './admin/admin-panel.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwtModule } from '@auth0/angular-jwt';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,11 +24,11 @@ import { JwtModule } from '@auth0/angular-jwt';
         tokenGetter: () => {
           return localStorage.getItem('token');
         },
-        allowedDomains: ['localhost:7100']
+        allowedDomains: ['http://dashboardapi.us-east-1.elasticbeanstalk.com']
       }
     })
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

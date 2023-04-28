@@ -5,13 +5,13 @@
   justify-content: space-between; box-shadow: 5px 5px 10px;">
     <div class="d-flex">
      <div class="side-nav-button text-light">
-      <img src="../../../../assets/logo.png" alt="100px" width="100px">
+      <img src="../../../../assets/logo.png" alt="100px" width="100px" [routerLink]="'inicio'">
        <!-- <i class="fa-solid fa-bars"></i> -->
      </div>
     </div>
 
     <div>
-      <span class="title" style="color: #fff; font-weight: bold; font-size: 1.4rem;">Dashboard</span>
+      <span class="title" style="color: #fff; font-weight: bold; font-size: 1.4rem;">Gestión de Soporte</span>
     </div>
   
     <button style="color: #212F3D;background-color: #fff; font-weight: bold; margin-right: 5px;" 
@@ -19,6 +19,7 @@
       
     </button>
     <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="'addTicket'"><mat-icon>add_to_queue</mat-icon>Agregar Ticket</button>
       <button mat-menu-item (click)="clearLocalStorage()"><mat-icon>delete</mat-icon>Limpiar Registro</button>
       <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon> Cerrar Sesión</button>
     </mat-menu>  
